@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.consecutivepractices"
+    namespace = "com.example.consecutivepracts"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.consecutivepractices"
+        applicationId = "com.example.consecutivepracts"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ConsecutivePractices"
+rootProject.name = "ConsecutivePracts"
 include(":app")
  
