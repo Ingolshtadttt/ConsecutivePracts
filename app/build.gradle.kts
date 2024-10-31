@@ -1,23 +1,22 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
-    namespace = "com.example.consecutivepracts"
+    namespace = "com.example.androidapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.consecutivepracts"
+        applicationId = "com.example.androidapp"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
     }
 
     buildTypes {
@@ -30,32 +29,28 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.constraintlayout)
     implementation ("androidx.navigation:navigation-compose:2.5.0")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0")
     implementation ("androidx.compose.material:material:1.2.0")
@@ -67,10 +62,17 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    kapt(libs.moshi.kotlin.codegen)
     testImplementation(libs.junit)
+    implementation(libs.coil.compose)
+    implementation(libs.androidx.constraintlayout.compose)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
